@@ -16,6 +16,7 @@ public class EmailBackEnd {
         System.out.println("Your randomly generated password is :"+this.password);
         this.emailid=createEmail();
         System.out.println("Your generated email id is :"+this.emailid);
+        email_pass.put(emailid,password);
 
     }
 
