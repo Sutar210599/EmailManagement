@@ -39,6 +39,12 @@ public class EmailBackEnd {
 
     private String setPass(){
         String passSelect="abcdefghijklmnopqrstuvwxyz#@!$%^&*1234567890";//Generate a password from this set
+        String genPass="";
+        for (int i=0;i<10;i++){
+            int rand=(int)(Math.random()*passSelect.length());
+            genPass+=passSelect.charAt(rand);
+        }
+        return genPass;
 
     }
     private String createEmail(){
