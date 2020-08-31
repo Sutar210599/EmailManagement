@@ -56,7 +56,7 @@ public class EmailBackEnd {
 
     }
     private String createEmail(){
-        String email=this.firstName+"."+this.lastName+"@"+companyName+"-"+this.department+".com";
+        String email=this.firstName.toLowerCase()+"."+this.lastName.toLowerCase()+"@"+companyName+"-"+this.department+".com";
         return email;
 
     }
