@@ -21,13 +21,24 @@ public class EmailBackEnd {
         Scanner input=new Scanner(System.in);
         int dep=input.nextInt();
         System.out.println("You have chosen the department : "+dep);
-        case dep:
-            
+        switch (dep){
+            case 1:
+                return "Sales";
+                break;
+            case 2:
+                return "DevOps";
+                break;
+            case 3:
+                return "Management";
+                break;
+        }
+
 
 
     }
 
     private String setPass(){
+        String passSelect="abcdefghijklmnopqrstuvwxyz#@!$%^&*1234567890";//Generate a password from this set
 
     }
     private String createEmail(){
