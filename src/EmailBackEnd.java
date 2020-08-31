@@ -5,6 +5,7 @@ public class EmailBackEnd {
     private String department;
     private String password;
     private String emailid;
+    private String companyName="Sutar";
     private HashMap<String, String> email_pass=new HashMap<>();//Maintain a record of Employee credentials
 
     EmailBackEnd(String firstName, String LastName){
@@ -12,7 +13,9 @@ public class EmailBackEnd {
         this.lastName=LastName;
         this.department=setDepartment();
         this.password=setPass();
+        System.out.println("Your randomly generated password is :"+this.password);
         this.emailid=createEmail();
+        System.out.println("Your generated email id is :"+this.emailid);
 
     }
 
@@ -21,17 +24,21 @@ public class EmailBackEnd {
         Scanner input=new Scanner(System.in);
         int dep=input.nextInt();
         System.out.println("You have chosen the department : "+dep);
+        String depa;
         switch (dep){
             case 1:
-                return "Sales";
+                depa="Sales";
                 break;
             case 2:
-                return "DevOps";
+                depa="DevOps";
                 break;
             case 3:
-                return "Management";
+                depa="Management";
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + dep);
         }
+        return depa;
 
 
 
@@ -48,6 +55,8 @@ public class EmailBackEnd {
 
     }
     private String createEmail(){
+        String email=this.firstName+"."+this.lastName+"@"+companyName+"-"+this.department+".com";
+        return email;
 
     }
 
