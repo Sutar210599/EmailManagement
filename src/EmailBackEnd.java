@@ -5,18 +5,35 @@ public class EmailBackEnd {
     private String department;
     private String password;
     private String emailid;
-    private String companyName="Sutar";
+    private String admin="Sutar";
+    private String admin_password="sutar#210599";
     private HashMap<String, String> email_pass=new HashMap<>();//Maintain a record of Employee credentials
 
     EmailBackEnd(String firstName, String LastName){
-        this.firstName=firstName;
-        this.lastName=LastName;
-        this.department=setDepartment();
-        this.password=setPass();
-        System.out.println("Your randomly generated password is :"+this.password);
-        this.emailid=createEmail();
-        System.out.println("Your generated email id is :"+this.emailid);
-        email_pass.put(emailid,password);
+        if validateAdmin(){
+            this.firstName=firstName;
+            this.lastName=LastName;
+            this.department=setDepartment();
+            this.password=setPass();
+            System.out.println("Your randomly generated password is :"+this.password);
+            this.emailid=createEmail();
+            System.out.println("Your generated email id is :"+this.emailid);
+            email_pass.put(emailid,password);
+
+        }
+        else{
+
+        }
+
+
+    }
+    private boolean validateAdmin(String id, String pass){
+        if (id.equals(this.admin) && pass.equals(this.admin_password)){
+            return true;
+        }
+        else{
+            return false;
+        }
 
     }
 
@@ -25,20 +42,12 @@ public class EmailBackEnd {
         Scanner input=new Scanner(System.in);
         int dep=input.nextInt();
         System.out.println("You have chosen the department : "+dep);
-        String depa;
-        switch (dep){
-            case 1:
-                depa="Sales";
-                break;
-            case 2:
-                depa="DevOps";
-                break;
-            case 3:
-                depa="Management";
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + dep);
-        }
+        String depa = switch (dep) {
+            case 1 -> "Sales";
+            case 2 -> "DevOps";
+            case 3 -> "Management";
+            default -> throw new IllegalStateException("Unexpected value: " + dep);
+        };
         return depa;
 
 
