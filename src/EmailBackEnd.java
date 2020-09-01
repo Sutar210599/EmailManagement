@@ -9,7 +9,7 @@ public class EmailBackEnd {
     private String admin_password="sutar#210599";
     private HashMap<String, String> email_pass=new HashMap<>();//Maintain a record of Employee credentials
 
-    EmailBackEnd(String firstName, String LastName){
+    EmailBackEnd(String adminID, String adminPass){
         if validateAdmin(){
             this.firstName=firstName;
             this.lastName=LastName;
@@ -25,6 +25,8 @@ public class EmailBackEnd {
 
         }
 
+    }
+    private  void setemp(String firstName, String lastName){
 
     }
     private boolean validateAdmin(String id, String pass){
