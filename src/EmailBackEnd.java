@@ -1,19 +1,19 @@
 import java.util.*;
 public class EmailBackEnd {
-    private String firstName;
-    private String lastName;
-    private String department;
-    private String password;
-    private String emailid;
-    private String companyName="Astril";
-    private String admin="Sutar";
-    private String admin_password="sutar#210599";
-    private boolean runtime=true;
+    private String firstName;//Employee First Name
+    private String lastName;//Employee Second Name
+    private String department;//Department-->1.Sales 2. DevOps 3. Management
+    private String password;//Password for each employee
+    private String emailid;//Generated emailid for each employee
+    private String companyName="Astril";//Company Name
+    private String admin="Sutar";//predefined admin name
+    private String admin_password="alphabetazeta";//Predetermined admin password
+    private boolean runtime=true;//run the code till the desired time
     private HashMap<String, String> email_pass=new HashMap<>();//Maintain a record of Employee credentials
 
     EmailBackEnd(String adminID, String adminPass){
 
-        if (validateAdmin(adminID,adminPass)){
+        if (validateAdmin(adminID,adminPass)){ //Method to validate admin access
             while (this.runtime){
                 System.out.println("Welcome Admin! Press 1 for adding employee, Press 2 for management employee, Press 3 to exit");
                 Scanner ad=new Scanner(System.in);
@@ -68,7 +68,7 @@ public class EmailBackEnd {
         }
 
     }
-    private  void setemp(String first, String last){
+    private  void setemp(String first, String last){//Method to set employee name
         this.firstName=first;
         this.lastName=last;
 
