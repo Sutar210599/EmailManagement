@@ -5,37 +5,74 @@ public class EmailBackEnd {
     private String department;
     private String password;
     private String emailid;
+    private String companyName="Astril";
     private String admin="Sutar";
     private String admin_password="sutar#210599";
     private HashMap<String, String> email_pass=new HashMap<>();//Maintain a record of Employee credentials
 
     EmailBackEnd(String adminID, String adminPass){
-        if validateAdmin(){
-            this.firstName=firstName;
-            this.lastName=LastName;
-            this.department=setDepartment();
-            this.password=setPass();
-            System.out.println("Your randomly generated password is :"+this.password);
-            this.emailid=createEmail();
-            System.out.println("Your generated email id is :"+this.emailid);
-            email_pass.put(emailid,password);
+        if (validateAdmin(adminID,adminPass)){
+            System.out.println("Welcome Admin!. Press 1 for adding employee, Press 2 for management employee");
+            Scanner ad=new Scanner(System.in);
+            int adch=ad.nextInt();
+
+            if (adch==1){
+                System.out.println("Enter the number of employees you wish to add.");
+                int num=ad.nextInt();
+                for (int k=0;k<num;k++){
+                    System.out.println("Enter employee "+(k+1) +" first name :");
+                    String firstname=ad.next();
+                    System.out.println("Enter employee " +(k+1)+" last name");
+                    String lastname=ad.next();
+                    setemp(firstName,lastName);
+                }
+            }
+            else if (adch==2){
+                System.out.println("Press 1 to view the hashmap of credentials, Press 2 to change password for an employee");
+                int d=ad.nextInt();
+                if (d==1){
+                    System.out.println(email_pass);
+                }
+                else if (d==2){
+                    System.out.println("Enter the email id of the employee");
+                    String emailChange=ad.next();
+                    if (email_pass.containsKey(emailChange)){
+                        System.out.println("Employee found!");
+                        System.out.println("Generating a new password for employee");
+                        String newPass=setPass();
+                        System.out.println("The new password is "+newPass);
+
+                    }
+                    else{
+                        System.out.println("Email id does not exist");
+                    }
+                }
+            }
+
 
         }
         else{
+            System.out.println("Invalid Credentials");
 
         }
 
     }
-    private  void setemp(String firstName, String lastName){
+    private  void setemp(String first, String last){
+        this.firstName=first;
+        this.lastName=last;
+
+        this.department=setDepartment();
+        this.password=setPass();
+        System.out.println("Your randomly generated password is :"+this.password);
+        this.emailid=createEmail();
+        System.out.println("Your generated email id is :"+this.emailid);
+        email_pass.put(emailid,password);
+
 
     }
+
     private boolean validateAdmin(String id, String pass){
-        if (id.equals(this.admin) && pass.equals(this.admin_password)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return id.equals(this.admin) && pass.equals(this.admin_password);
 
     }
 
@@ -67,8 +104,8 @@ public class EmailBackEnd {
 
     }
     private String createEmail(){
-        String email=this.firstName.toLowerCase()+"."+this.lastName.toLowerCase()+"@"+companyName.toLowerCase()+"-"+this.department.toLowerCase()+".com";
-        return email;
+        this.emailid=this.firstName.toLowerCase()+"."+this.lastName.toLowerCase()+"@"+companyName.toLowerCase()+"-"+this.department.toLowerCase()+".com";
+        return emailid;
 
     }
 
