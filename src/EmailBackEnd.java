@@ -21,10 +21,10 @@ public class EmailBackEnd {
                 int num=ad.nextInt();
                 for (int k=0;k<num;k++){
                     System.out.println("Enter employee "+(k+1) +" first name :");
-                    String firstname=ad.next();
+                    String first=ad.next();
                     System.out.println("Enter employee " +(k+1)+" last name");
-                    String lastname=ad.next();
-                    setemp(firstName,lastName);
+                    String last=ad.next();
+                    setemp(first,last);
                 }
             }
             else if (adch==2){
@@ -64,7 +64,7 @@ public class EmailBackEnd {
         this.department=setDepartment();
         this.password=setPass();
         System.out.println("Your randomly generated password is :"+this.password);
-        this.emailid=createEmail();
+        createEmail();
         System.out.println("Your generated email id is :"+this.emailid);
         email_pass.put(emailid,password);
 
@@ -103,9 +103,9 @@ public class EmailBackEnd {
         return genPass;
 
     }
-    private String createEmail(){
+    private void createEmail(){
         this.emailid=this.firstName.toLowerCase()+"."+this.lastName.toLowerCase()+"@"+companyName.toLowerCase()+"-"+this.department.toLowerCase()+".com";
-        return emailid;
+
 
     }
 
