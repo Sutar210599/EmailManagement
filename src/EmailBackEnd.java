@@ -30,13 +30,12 @@ public class EmailBackEnd {
                         setemp(first,last);
                     }
                 }
-                else if (adch==2){
+                else if (adch==2) {
                     System.out.println("Press 1 to view the hashmap of credentials, Press 2 to change password for an employee");
-                    int d=ad.nextInt();
-                    if (d==1){
+                    int d = ad.nextInt();
+                    if (d == 1) {
                         System.out.println(email_pass);
-                    }
-                    else if (d==2) {
+                    } else if (d == 2) {
                         System.out.println("Enter the email id of the employee");
                         String emailChange = ad.next();
                         if (email_pass.containsKey(emailChange)) {
@@ -49,15 +48,16 @@ public class EmailBackEnd {
                             System.out.println("Email id does not exist");
                         }
                     }
+                }
                 else if(adch==3){
                     System.out.println("Bye!");
-                    this.runtime=false;
+                    //this.runtime=false;
                     break;
 
                         }
 
 
-                }
+
             }
 
 
